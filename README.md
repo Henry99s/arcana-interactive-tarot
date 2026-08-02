@@ -1,7 +1,7 @@
 # Arcana — Interactive Tarot
 
 **Web Application Development — End-Module Assessment**
-Henrique Simoura de Almeida |
+<br>Henrique Simoura de Almeida |<br>
 CertHE Computer Science, University of Essex Online
 
 A data-driven web application with a relational backend, authenticated user
