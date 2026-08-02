@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account — Arcana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">✦ ARCANA</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reading.html">Card Reading</a></li>
+        <li><a href="account.html" class="active">Account</a></li>
+        <li><a href="about.html">About Tarot</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-title">Your Account</h1>
+        <p class="page-subtitle">Sign in to save your readings and revisit them later.</p>
+      </div>
+    </section>
+
+    <div class="about-section">
+      <div class="container">
+
+        <!-- Shown while the session is being checked -->
+        <p class="validation-msg" id="account-loading">Checking your session…</p>
+
+        <!-- Shown when signed in -->
+        <section class="account-panel hidden" id="signed-in-panel">
+          <h2 class="section-title">Signed in</h2>
+          <p class="page-subtitle" id="signed-in-details"></p>
+          <div class="step-action">
+            <button class="btn-ghost" id="btn-logout">Sign out</button>
+          </div>
+        </section>
+
+        <!-- Shown when signed out -->
+        <section class="account-forms hidden" id="signed-out-panel">
+
+          <article class="about-block">
+            <h2>Sign in</h2>
+            <form id="login-form" novalidate>
+              <label class="field-label" for="login-username">Username</label>
+              <input class="field-input" type="text" id="login-username" name="username"
+                     required autocomplete="username">
+
+              <label class="field-label" for="login-password">Password</label>
+              <input class="field-input" type="password" id="login-password" name="password"
+                     required autocomplete="current-password">
+
+              <button class="btn-primary" type="submit">Sign in</button>
+              <p class="validation-msg" id="login-message" role="alert" aria-live="polite"></p>
+            </form>
+          </article>
+
+          <article class="about-block">
+            <h2>Create an account</h2>
+            <form id="register-form" novalidate>
+              <label class="field-label" for="register-username">Username</label>
+              <input class="field-input" type="text" id="register-username" name="username"
+                     required minlength="3" maxlength="30" autocomplete="username">
+
+              <label class="field-label" for="register-email">Email</label>
+              <input class="field-input" type="email" id="register-email" name="email"
+                     required maxlength="254" autocomplete="email">
+
+              <label class="field-label" for="register-password">Password</label>
+              <input class="field-input" type="password" id="register-password" name="password"
+                     required minlength="8" maxlength="128" autocomplete="new-password">
+              <p class="field-hint">At least 8 characters. Length matters more than symbols.</p>
+
+              <button class="btn-primary" type="submit">Create account</button>
+              <p class="validation-msg" id="register-message" role="alert" aria-live="polite"></p>
+            </form>
+          </article>
+
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>✦ ARCANA · Interactive Tarot · Built for academic purposes</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/nav.js"></script>
+
+</body>
+</html>

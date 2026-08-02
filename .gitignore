@@ -1,0 +1,4 @@
+node_modules/
+db/arcana.db-wal
+db/arcana.db-shm
+.env

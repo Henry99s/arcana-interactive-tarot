@@ -1,0 +1,22 @@
+{
+  "name": "arcana",
+  "version": "1.0.0",
+  "description": "Arcana — secure interactive tarot web application (End-Module Assessment)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "db:init": "node db/init.js",
+    "db:seed": "node db/seed.js",
+    "db:verify": "node db/verify.js",
+    "db:reset": "node db/init.js && node db/seed.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^13.0.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
+  }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Reading — Arcana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER / NAVIGATION ===== -->
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">✦ ARCANA</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reading.html" class="active">Card Reading</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a href="about.html">About Tarot</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">☰</button>
+    </nav>
+  </header>
+
+  <main class="reading-main">
+
+    <!-- ===== STEP 1: Choose a spread ===== -->
+    <section class="reading-step" id="step-choose">
+      <div class="container">
+        <h1 class="page-title">Choose your spread</h1>
+        <p class="page-subtitle">Each spread offers a different perspective. Choose the one that resonates with you now.</p>
+
+        <div class="spread-options">
+
+          <button class="spread-card" data-spread="one" aria-pressed="false">
+            <span class="spread-icon">☽</span>
+            <span class="spread-title">Card of the Day</span>
+            <span class="spread-text">A single card to reflect on the present moment.</span>
+            <span class="spread-count">1 card</span>
+          </button>
+
+          <button class="spread-card spread-card--featured" data-spread="three" aria-pressed="false">
+            <span class="spread-icon">✦ ✦ ✦</span>
+            <span class="spread-title">Past · Present · Future</span>
+            <span class="spread-text">The classic spread. Three cards that reveal the timeline of a situation.</span>
+            <span class="spread-count">3 cards</span>
+          </button>
+
+          <button class="spread-card" data-spread="five" aria-pressed="false">
+            <span class="spread-icon">✧ ✦ ✧</span>
+            <span class="spread-title">Simple Cross</span>
+            <span class="spread-text">Situation, challenge, root, advice and outcome — a broader view.</span>
+            <span class="spread-count">5 cards</span>
+          </button>
+
+          <button class="spread-card" data-spread="celtic" aria-pressed="false">
+            <span class="spread-icon">⊕</span>
+            <span class="spread-title">Celtic Cross</span>
+            <span class="spread-text">The most complete spread in Western tarot. For deeper questions.</span>
+            <span class="spread-count">10 cards</span>
+          </button>
+
+        </div>
+
+        <!-- Reveal button + validation message -->
+        <div class="step-action">
+          <button class="btn-primary" id="btn-reveal" disabled>Shuffle and Reveal</button>
+          <p class="validation-msg" id="validation-msg" aria-live="polite">Select a spread to continue.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STEP 2: Reading ===== -->
+    <section class="reading-step hidden" id="step-reading">
+      <div class="container">
+        <div class="reading-header">
+          <h2 id="reading-title">Spread</h2>
+          <p id="reading-description"></p>
+        </div>
+
+        <!-- Cards are created by reading.js -->
+        <div class="cards-grid" id="cards-grid"></div>
+
+        <!-- Card meanings are created by reading.js -->
+        <div class="card-meanings" id="card-meanings"></div>
+
+        <!-- Combined meaning is created by reading.js -->
+        <div class="combined-meaning" id="combined-meaning"></div>
+
+        <!-- Saving the reading (INSERT). Hidden by reading.js when no
+             session is present; the server rejects the request in any case. -->
+        <form class="save-form" id="save-form" novalidate>
+          <h3 class="save-form-title">Save this reading</h3>
+
+          <label class="field-label" for="save-title">Title</label>
+          <input class="field-input" type="text" id="save-title" name="title"
+                 required maxlength="100">
+
+          <label class="field-label" for="save-note">Note (optional)</label>
+          <textarea class="field-input" id="save-note" name="note"
+                    rows="3" maxlength="2000"></textarea>
+
+          <button class="btn-primary" type="submit">Save Reading</button>
+          <p class="save-confirm" id="save-message" role="alert" aria-live="polite"></p>
+        </form>
+
+        <div class="reading-actions">
+          <button class="btn-ghost" id="btn-new">New Spread</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Saved readings (history) ===== -->
+    <section class="reading-step" id="step-history">
+      <div class="container">
+        <h2 class="section-title">Saved Readings</h2>
+        <p class="history-empty" id="history-message" aria-live="polite"></p>
+        <div class="history-list" id="history-list"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>✦ ARCANA · Interactive Tarot · Built for academic purposes</p>
+  </footer>
+
+  <!-- cards.js provides the card data; api.js wraps the server API.
+       Both must load before reading.js, which uses them. -->
+  <script src="js/cards.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/reading.js"></script>
+  <script src="js/nav.js"></script>
+
+</body>
+</html>
